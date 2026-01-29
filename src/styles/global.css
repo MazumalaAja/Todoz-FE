@@ -2,3 +2,6 @@
 @import "tailwindcss";
 
 /* ===== My Style ===== */
+body {
+     font-family: "poppins", Arial, Helvetica, sans-serif;
+}

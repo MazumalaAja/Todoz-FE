@@ -3,7 +3,7 @@ import { FaChartBar, FaHome, FaList, FaUser } from "react-icons/fa";
 import Navbar from "../components/navbar";
 
 // ===== Code =====
-export default function HomePage() {
+export default function StatisticsPage() {
      // ===== Data Navigation =====
      const data = [
           { path: "/", label: "Dashboard", icon: FaHome },
