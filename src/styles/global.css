@@ -2,6 +2,14 @@
 @import "tailwindcss";
 
 /* ===== My Style ===== */
+*::-webkit-scrollbar {
+     display: none;
+}
+
+:root {
+     interpolate-size: allow-keywords;
+}
+
 body {
      font-family: "poppins", Arial, Helvetica, sans-serif;
 }

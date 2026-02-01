@@ -1,16 +1,19 @@
 // ==== Imports =====
 import { FiCheckSquare, } from "react-icons/fi"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 // ===== Code =====
 export default function Navbar({ data = [] }) {
+     // ===== Navigation =====
+     const navigate = useNavigate();
      return (
           <>
-               <header className={`fixed z-999 top-0 left-0 bg-neutral-900 right-0 border-b-2 border-neutral-500/30 p-3 md:p-4 flex justify-between items-center`}>
+               {/* ===== Container ===== */}
+               <header className={`fixed z-999 top-0 left-0 bg-neutral-900 right-0 border-b-2 border-neutral-600 p-3 md:p-4 flex justify-between items-center`}>
                     {/* ===== Brand ===== */}
-                    <div className="flex items-center gap-1">
+                    <div onClick={() => navigate("/")} className="flex items-center gap-1 active:scale-90 cursor-pointer">
                          <FiCheckSquare className="text-neutral-200 text-xl" />
-                         <h2 className="text-xl text-neutral-200 font-medium">Todoz.</h2>
+                         <h2 className="text-xl  text-neutral-200 font-medium">Todoz.</h2>
                     </div>
 
                     {/* ===== Navigation ==== */}
@@ -37,11 +40,11 @@ export default function Navbar({ data = [] }) {
 function Links({ to, label, style, icon: Icon }) {
      return (
           <>
-               {!Icon && <NavLink className={({ isActive }) => `${style ? style : ``} ${isActive ? `text-neutral-100` : `text-neutral-500`} p-2 hover:text-neutral-100 duration-150 relative after:absolute after:bottom-1 after:border after:w-full after:scale-x-0 hover:after:scale-x-75 after:duration-150 after:left-0`} to={to} >
+               {!Icon && <NavLink className={({ isActive }) => `${style ? style : ``} ${isActive ? `text-neutral-100` : `text-neutral-500`} p-2 hover:text-neutral-100 duration-150 relative after:absolute after:bottom-1 after:border after:w-full after:scale-x-0 hover:after:scale-x-75 active:scale-90 after:duration-150 after:left-0`} to={to} >
                     <span>{label}</span>
                </NavLink >}
                {Icon &&
-                    <NavLink to={to} className={({ isActive }) => `${style ? `` : ``} ${isActive ? `text-neutral-100` : `text-neutral-500`} text-md sm:text-xl`}>
+                    <NavLink to={to} className={({ isActive }) => `${style ? `` : ``} ${isActive ? `text-neutral-100` : `text-neutral-500`} text-md sm:text-xl active:scale-90`}>
                          <Icon />
                     </NavLink>
                }
