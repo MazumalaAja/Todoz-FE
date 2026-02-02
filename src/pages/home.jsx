@@ -5,9 +5,14 @@ import dataTasks from "../../data/tasks.json"
 import TasksPlace from "../components/tasksPlace";
 import { useEffect, useRef, useState } from "react";
 import Select from "../components/select";
+import { RiInboxFill, RiInfoI } from "react-icons/ri";
+import { FiInfo } from "react-icons/fi";
 
 // ===== Code =====
 export default function HomePage() {
+     // ===== Master Data =====
+     const [masterDataTasks, setMasterDataTasks] = useState([]);
+
      // ===== Selected =====
      const [selected, setSelected] = useState({
           year: new Date().getFullYear(),
@@ -28,6 +33,7 @@ export default function HomePage() {
           { path: "/tasks", label: "Tasks", icon: FaList },
           { path: "/statistics", label: "Statistics", icon: FaChartBar },
      ]
+
 
      // ===== HandleClick =====
      function handleClickDate(value) {
@@ -51,7 +57,18 @@ export default function HomePage() {
           setSelected(prev => ({ ...prev, date: Number(value) }));
      }
 
+     // ===== Filter Tasks =====
+     function filterByTime() {
+          const result = dataTasks.filter(v => v.createdAt == `${selected.year}-${String(selected.month + 1).padStart(2, "0")}-${String(selected.date).padStart(2, "0")}`)
+          if (result) {
+               setMasterDataTasks(result);
+          } else {
+               setMasterDataTasks(dataTasks)
+          }
+     }
+
      useEffect(() => {
+          filterByTime();
           if (refrences.current) {
                const index = selected.date - 1;
                const activeDay = refrences.current?.children;
@@ -91,9 +108,16 @@ export default function HomePage() {
 
                     {/* ===== List Tasks ===== */}
                     <div className="w-full max-w-6xl mx-auto">
-                         {dataTasks && dataTasks.map((v, i) => (
+                         {masterDataTasks.length > 0 ? masterDataTasks.map((v, i) => (
                               <TasksPlace key={i} label={v.title} date={v.updatedAt} />
-                         ))}
+                         ))
+                              :
+                              <div className="flex w-full max-w-4xl mx-auto text-center justify-center items-center flex-col gap-2 my-6 border-2 border-dashed border-neutral-400 p-5 rounded-lg">
+                                   <FiInfo className="text-4xl text-neutral-300" />
+                                   <h2 className="text-neutral-300 text-2xl">Data Kosong!</h2>
+                                   <p className="text-lg text-neutral-500">Kamu belum membuat agenda atau tugas pada tanggal ini mohon pergi ke halaman tasks untuk membuat tugas.</p>
+                              </div>
+                         }
                     </div>
                </div >
           </>
