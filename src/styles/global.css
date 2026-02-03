@@ -13,3 +13,20 @@
 body {
      font-family: "poppins", Arial, Helvetica, sans-serif;
 }
+
+.tables {
+     @apply rounded-md overflow-auto
+}
+
+thead tr {
+     @apply bg-neutral-900/50
+}
+
+tbody tr {
+     @apply cursor-pointer
+}
+
+
+td {
+     @apply p-2
+}

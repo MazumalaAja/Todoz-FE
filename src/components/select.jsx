@@ -3,7 +3,7 @@ import { act, useState } from "react";
 import { RiArrowLeftSLine } from "react-icons/ri";
 
 // ===== Code ====== 
-export default function Select({ data = [], value = "", selected, onClick }) {
+export default function Selectx({ data = [], value = "", selected, onClick }) {
      const [active, setActive] = useState(false)
      return (
           <>
@@ -15,7 +15,7 @@ export default function Select({ data = [], value = "", selected, onClick }) {
                     </div>
 
                     {/* ===== List Option */}
-                    {data && <ul className={`w-full ${active ? `p-2 h-max` : `h-0`} duration-200 overflow-hidden bg-neutral-950 backdrop-blur-sm  rounded-md left-0 absolute my-2 top-full`}>
+                    {data && <ul className={`w-full ${active ? `p-2 h-max` : `h-0`} duration-200 overflow-auto bg-neutral-950 backdrop-blur-sm  rounded-md left-0 absolute my-2 top-full`}>
                          {data.map((v, i) => (
                               <li onClick={() => {
                                    setActive(false);

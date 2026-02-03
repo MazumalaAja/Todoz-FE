@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 import dataTasks from "../../data/tasks.json"
 import TasksPlace from "../components/tasksPlace";
 import { useEffect, useRef, useState } from "react";
-import Select from "../components/select";
+import Selectx from "../components/select";
 import { RiInboxFill, RiInfoI } from "react-icons/ri";
 import { FiInfo } from "react-icons/fi";
 
@@ -30,7 +30,7 @@ export default function HomePage() {
      const data = [
           { path: "/", label: "Dashboard", icon: FaHome },
           { path: "/profile", label: "Profile", icon: FaUser },
-          { path: "/tasks", label: "Tasks", icon: FaList },
+          { path: "/tasks", label: "Tasks Management", icon: FaList },
           { path: "/statistics", label: "Statistics", icon: FaChartBar },
      ]
 
@@ -59,7 +59,7 @@ export default function HomePage() {
 
      // ===== Filter Tasks =====
      function filterByTime() {
-          const result = dataTasks.filter(v => v.createdAt == `${selected.year}-${String(selected.month + 1).padStart(2, "0")}-${String(selected.date).padStart(2, "0")}`)
+          const result = dataTasks.filter(v => v.is_everyday || v.createdAt == `${selected.year}-${String(selected.month + 1).padStart(2, "0")}-${String(selected.date).padStart(2, "0")}`)
           if (result) {
                setMasterDataTasks(result);
           } else {
@@ -90,7 +90,7 @@ export default function HomePage() {
 
                          {/* ===== Handle Month ===== */}
                          <div>
-                              <Select onClick={handleClickMonth} selected={selected.month} value={new Date(selected.year, selected.month).toLocaleString("id-ID", { month: "long" })} data={month} />
+                              <Selectx onClick={handleClickMonth} selected={selected.month} value={new Date(selected.year, selected.month).toLocaleString("id-ID", { month: "long" })} data={month} />
                          </div>
 
                          {/* ===== Handle Year ===== */}
@@ -109,7 +109,7 @@ export default function HomePage() {
                     {/* ===== List Tasks ===== */}
                     <div className="w-full max-w-6xl mx-auto">
                          {masterDataTasks.length > 0 ? masterDataTasks.map((v, i) => (
-                              <TasksPlace key={i} label={v.title} date={v.updatedAt} />
+                              <TasksPlace progressTask={v.progress} key={i} label={v.title} date={v.updatedAt} />
                          ))
                               :
                               <div className="flex w-full max-w-4xl mx-auto text-center justify-center items-center flex-col gap-2 my-6 border-2 border-dashed border-neutral-400 p-5 rounded-lg">

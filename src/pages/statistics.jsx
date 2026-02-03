@@ -8,7 +8,7 @@ export default function StatisticsPage() {
      const data = [
           { path: "/", label: "Dashboard", icon: FaHome },
           { path: "/profile", label: "Profile", icon: FaUser },
-          { path: "/tasks", label: "Tasks", icon: FaList },
+          { path: "/tasks", label: "Tasks Management", icon: FaList },
           { path: "/statistics", label: "Statistics", icon: FaChartBar },
      ]
      return (
