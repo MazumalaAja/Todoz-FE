@@ -8,8 +8,8 @@ export default function Selectx({ data = [], value = "", selected, onClick }) {
      return (
           <>
                {/* ====== Container ===== */}
-               <div className="border relative border-neutral-400 p-1 px-3 w-max m-1 rounded-md flex justify-between  items-center">
-                    <input className="text-neutral-200 focus:outline-0" readOnly type="text" value={value} placeholder="choose your own..." />
+               <div className="border relative bg-neutral-950 border-neutral-600 p-1 px-3 w-max m-1 rounded-md flex justify-between  items-center">
+                    <input className=" focus:outline-0 text-amber-300" readOnly type="text" value={value} placeholder="choose your own..." />
                     <div onClick={() => setActive(!active)}>
                          <RiArrowLeftSLine className={` ${active ? `-rotate-90` : ``} duration-200 text-neutral-200 text-xl cursor-pointer`} />
                     </div>

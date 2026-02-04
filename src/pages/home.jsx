@@ -82,10 +82,13 @@ export default function HomePage() {
 
                {/* ===== List Tasks ===== */}
                <div className={`bg-neutral-900 min-h-screen py-20 space-y-3`}>
+                    <div className="w-full max-w-6xl mx-auto text-2xl text-neutral-300">
+                         <h2>Dashboard.</h2>
+                    </div>
                     <div className="w-full max-w-6xl mx-auto flex items-center gap-2">
                          {/* ===== Handle Day ===== */}
-                         <div className="border-neutral-400 border w-max px-3 py-1 rounded-md text-neutral-200">
-                              <input onChange={handleChangeDate} value={selected.date} type="text" placeholder="Choose your own..." className="focus:outline-0" min={1} max={getDayInMonth} />
+                         <div className="border-neutral-600 bg-neutral-950 border w-max px-3 py-1 rounded-md text-neutral-200">
+                              <input onChange={handleChangeDate} value={selected.date} type="text" placeholder="Choose your own..." className="focus:outline-0 text-amber-300" min={1} max={getDayInMonth} />
                          </div>
 
                          {/* ===== Handle Month ===== */}
@@ -94,8 +97,8 @@ export default function HomePage() {
                          </div>
 
                          {/* ===== Handle Year ===== */}
-                         <div className="border-neutral-400 border w-max px-3 py-1 rounded-md text-neutral-200">
-                              <input onChange={handleChangeYear} value={selected.year} type="text" placeholder="Choose your own..." className="focus:outline-0" />
+                         <div className="border-neutral-600 bg-neutral-950 border w-max px-3 py-1 rounded-md text-neutral-200">
+                              <input onChange={handleChangeYear} value={selected.year} type="text" placeholder="Choose your own..." className="focus:outline-0 text-amber-300" />
                          </div>
                     </div>
 
@@ -126,7 +129,7 @@ export default function HomePage() {
 
 function CategoryDay({ label, month, selected, onClick }) {
      return (
-          <button onClick={onClick} className={`${selected ? `bg-neutral-200 text-neutral-900 border-neutral-200` : `text-neutral-200 border-neutral-400`} cursor-pointer active:scale-95 flex items-center gap-2 border  px-4 py-0.5 rounded-lg`}>
+          <button onClick={onClick} className={`${selected ? `bg-neutral-200 text-neutral-900 border-neutral-200` : `text-neutral-200 border-neutral-600`} cursor-pointer active:scale-95 flex items-center gap-2 border  px-4 py-0.5 rounded-lg`}>
                <span>{label}</span>
                <span>{month}</span>
           </button>

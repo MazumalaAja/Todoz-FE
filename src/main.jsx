@@ -7,6 +7,7 @@ import "./styles/global.css"
 // ===== Code =====
 createRoot(document.getElementById("root")).render(
      <StrictMode>
+
           <App />
      </StrictMode>
 )
